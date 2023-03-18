@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xổ Số</title>
+</head>
+<body>
+    <button type="button" onclick="startGame()">Chơi</button>
+
+    <script>
+        function startGame() {
+            let maximum;
+            maximum = parseInt(prompt("Bạn muốn dự đoán trong khoảng từ 0 đến: "));
+            while(Number.isNaN(maximum)) {
+                alert("Dữ liệu nhập vào không đúng định dạng, hãy nhập lại")
+                maximum = parseInt(prompt("Bạn muốn dự đoán trong khoảng từ 0 đến: "));
+            };
+
+            let result = Math.floor(Math.random() * (maximum + 1));
+            let answer = parseInt(prompt("Nhập vào dự đoán của bạn: "));
+            for (let i = 0; i < 2; i++) {
+                if (answer == result) {
+                    alert ("Chúc mừng bạn đã đoán đúng!");
+                    break
+                } else if (answer > result) {
+                    alert ("Số dự đoán của bạn lớn hơn kết quả! (Bạn còn " + (2 - i) + " lượt dự đoán)")
+                    answer = parseInt(prompt("Nhập vào dự đoán của bạn: "));
+                } else {
+                    alert ("Số dự đoán của bạn nhỏ hơn kết quả! (Bạn còn " + (2 - i) + " lượt dự đoán)")
+                    answer = parseInt(prompt("Nhập vào dự đoán của bạn: "));
+                }
+            }
+            
+            if (answer != result) {
+                alert("Chúc bạn may mắn lần sau, số may mắn là: " + result);
+            }
+        }
+    </script>
+</body>
+</html>
